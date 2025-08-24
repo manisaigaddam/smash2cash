@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useAccount } from "wagmi";
 import { hitService } from "@/services/hitService";
 import { Trophy, Medal, User, Target, ArrowLeft } from "lucide-react";
+import AchievementsPanel from "./AchievementsPanel";
 import { useToast } from "@/hooks/use-toast";
 
 interface LeaderboardScreenProps {
@@ -201,6 +202,12 @@ const LeaderboardScreen = ({ onBack }: LeaderboardScreenProps) => {
             </div>
           )}
         </div>
+        {/* Achievements panel spans full width below */}
+        {playerStats && (
+          <div className="lg:col-span-3">
+            <AchievementsPanel address={playerStats.player} totalScore={playerStats.totalScore} hitCount={playerStats.hitCount} />
+          </div>
+        )}
       </div>
     </div>
   );
